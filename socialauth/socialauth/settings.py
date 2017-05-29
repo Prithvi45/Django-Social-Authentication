@@ -24,6 +24,8 @@ SECRET_KEY = 'wsr9%5x(o@dphtwux-wds6l01@q0uq^zuendp9h*0ra6r&$1%c'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+SOCIAL_AUTH_RAISE_EXCEPTIONS = True
+RAISE_EXCEPTIONS = True
 
 ALLOWED_HOSTS = []
 
@@ -39,6 +41,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'social_django',  # <--
     'prof',
+    # 'python-social-auth',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -87,11 +90,12 @@ DATABASES = {
 }
 
 
+
+
 AUTHENTICATION_BACKENDS = (
     'social_core.backends.github.GithubOAuth2',
     'social_core.backends.twitter.TwitterOAuth',
     'social_core.backends.facebook.FacebookOAuth2',
-
     'django.contrib.auth.backends.ModelBackend',
 )
 
@@ -127,3 +131,16 @@ SOCIAL_AUTH_GITHUB_SECRET = '1ef0072ce646c4921480fd346e1415b0153f5a1b'
 
 SOCIAL_AUTH_FACEBOOK_KEY = '1733811270251142'  # App ID
 SOCIAL_AUTH_FACEBOOK_SECRET = '92c6142d383a38e88d34c78a0bb11f6b'  # App Secret
+
+SOCIAL_AUTH_PIPELINE = (
+    'social_core.pipeline.social_auth.social_details',
+    'social_core.pipeline.social_auth.social_uid',
+    'social_core.pipeline.social_auth.social_user',
+    'social_core.pipeline.user.get_username',
+    'social_core.pipeline.user.create_user',
+    'social_core.pipeline.social_auth.associate_user',
+    'social_core.pipeline.social_auth.load_extra_data',
+    'social_core.pipeline.user.user_details',
+    'social_core.pipeline.social_auth.associate_by_email',
+    'prof.pipeline.user_details'
+)
