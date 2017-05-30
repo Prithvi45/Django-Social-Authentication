@@ -8,8 +8,8 @@ def user_details(backend, details, response, user=None, *args, **kwargs):
             attrs = {'user': user}
             print user
             print response
-            if backend.name == 'facebook':
-            # if strategy.backend.__class__.__name__ == 'FacebookOAuth2':
+            # if backend.name == 'facebook':
+            if strategy.backend.__class__.__name__ == 'FacebookOAuth2':
                 fb_data = {
                 'city': response['location']['name'],
                 'gender': response['gender'],
