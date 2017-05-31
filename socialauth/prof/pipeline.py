@@ -5,7 +5,7 @@ from django.core.files.temp import NamedTemporaryFile
 # User details pipeline
 from django.core.files import File
 from django.core.files.temp import NamedTemporaryFile
-from urllib.request import urlopen
+# from urllib.request import urlopen
 
 def user_details(backend, details, response, user=None, *args, **kwargs):
     print backend.name
@@ -23,15 +23,7 @@ def user_details(backend, details, response, user=None, *args, **kwargs):
             img_url = response['avatar_url']
 
             if backend.name =='github':
-                UP=UserProfile.objects.create(user=user,bio=response['bio'],email=response['email'],city=response['location'])
-                UP.save()
-                UP = UserProfile()
-                # Save image
-                image_url = response['avatar_url']
-                img_temp = NamedTemporaryFile()
-                img_temp.write(urlopen(image_url).read())
-                img_temp.flush()
-                UP.photo.save("image_%s" % UP.pk, File(img_temp))
+                UP=UserProfile.objects.create(user=user,bio=response['bio'],email=response['email'],city=response['location'],imgurl=response['avatar_url'])
                 UP.save()
             else:
                 print "another backend"
