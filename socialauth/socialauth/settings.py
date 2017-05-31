@@ -123,7 +123,7 @@ LOGIN_URL = 'login'
 LOGOUT_URL = '/home'
 LOGIN_REDIRECT_URL = 'home'
 
-# SOCIAL_AUTH_LOGIN_REDIRECT_URL ='/'
+SOCIAL_AUTH_LOGIN_REDIRECT_URL ='/'
 SOCIAL_AUTH_LOGOUT_REDIRECT_URL ='/home'
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
@@ -133,7 +133,9 @@ SOCIAL_AUTH_GITHUB_SECRET = '1ef0072ce646c4921480fd346e1415b0153f5a1b'
 
 
 SOCIAL_AUTH_FACEBOOK_KEY = '1733811270251142'  # App ID
-SOCIAL_AUTH_FACEBOOK_SECRET = '92c6142d383a38e88d34c78a0bb11f6b'  # App Secret
+SOCIAL_AUTH_FACEBOOK_SECRET = '9e694ece0f67cf03a93ffefc6bb50f88'
+# '92c6142d383a38e88d34c78a0bb11f6b'  # old App Secret
+
 
 SOCIAL_AUTH_PIPELINE = (
     'social_core.pipeline.social_auth.social_details',
@@ -147,3 +149,8 @@ SOCIAL_AUTH_PIPELINE = (
     'social_core.pipeline.social_auth.associate_by_email',
     'prof.pipeline.user_details'
 )
+
+SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
+  'locale': 'ru_RU',
+  'fields': 'id, name, email, age_range'
+}
