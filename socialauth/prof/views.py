@@ -9,3 +9,7 @@ def home(request):
 	print "welcome"
 	userprofile = UserProfile.objects.get(user=request.user)
 	return render(request,'home.html',locals())
+
+def index(request):
+	print "welcome"
+	return render (request,'index.html',locals())
