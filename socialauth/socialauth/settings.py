@@ -96,7 +96,11 @@ AUTHENTICATION_BACKENDS = (
     'social_core.backends.github.GithubOAuth2',
     'social_core.backends.twitter.TwitterOAuth',
     'social_core.backends.facebook.FacebookOAuth2',
+    'social_core.backends.google.GoogleOAuth2',
+    'social_core.backends.google.GoogleOAuth',
+    # 'social.backends.google.GoogleOAuth2', 
     'django.contrib.auth.backends.ModelBackend',
+    
 )
 
 
@@ -137,6 +141,11 @@ SOCIAL_AUTH_FACEBOOK_SECRET = '9e694ece0f67cf03a93ffefc6bb50f88'
 # '92c6142d383a38e88d34c78a0bb11f6b'  # old App Secret
 
 
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '733529196319-n2j68shuq8hcp5hm99lsopc65lhfprf3.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'yhKxplvkeODdzHBFxKw4sHyR'
+
+
+
 SOCIAL_AUTH_PIPELINE = (
     'social_core.pipeline.social_auth.social_details',
     'social_core.pipeline.social_auth.social_uid',
@@ -154,3 +163,8 @@ SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
   'locale': 'ru_RU',
   'fields': 'id, name, email, age_range'
 }
+
+
+# SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
+#     'https://www.googleapis.com/auth/plus.login'
+# ]
