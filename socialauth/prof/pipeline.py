@@ -16,6 +16,7 @@ import json
 
 def user_details(backend, details, response, user=None, *args, **kwargs):
     print backend.name
+    print "im here"
     if user:
         if kwargs['is_new']:
             attrs = {'user': user}
